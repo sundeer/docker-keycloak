@@ -1,6 +1,7 @@
 version: 2
+
 jobs:
-  build:
+  some_name:
     machine:
       enabled: true
     branches:
@@ -37,6 +38,7 @@ jobs:
 
 workflows:
   version: 2
+
   build_image:
     jobs:
-      - build
+      - some_name
