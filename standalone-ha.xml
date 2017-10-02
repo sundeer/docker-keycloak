@@ -451,6 +451,7 @@
                     name="default"
                     socket-binding="http"
                     redirect-socket="https"
+                    proxy-address-forwarding="true"
                 />
                 <host name="default-host" alias="localhost">
                     <location name="/" handler="welcome-content"/>
