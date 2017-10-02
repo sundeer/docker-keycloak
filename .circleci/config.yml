@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Authenitcate Docker Hub
           when: on_success
-          command: docker login -e ${DOCKER_EMAIL} -u ${DOCKER_USER} -p ${DOCKER_PASS}
+          command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
       - deploy:
           name: Push to Docker Hub
           when: on_success
