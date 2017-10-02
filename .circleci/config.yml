@@ -18,19 +18,21 @@ jobs:
           name: Authenitcate Docker Hub
           when: on_success
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-      - deploy:
-          name: Push to Docker Hub
+      - run:
+          name: Tag and Push to Docker Hub
           when: on_success
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker tag ${APP_NAME}:prod ${DOCKER_USER}/${APP_NAME}:${CIRCLE_TAG}
+              docker push ${DOCKER_USER}/${APP_NAME}:${CIRCLE_TAG}
             fi
-      - deploy:
-          name: Push to Docker Hub
+      - run:
+          name: Tag and Push to Docker Hub
           when: on_success
           command: |
             if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              docker tag $APP_NAME:prod $DOCKER_USER/$APP_NAME:dev
+              docker tag ${APP_NAME}:prod ${DOCKER_USER}/${APP_NAME}:dev
+              docker push ${DOCKER_USER}/${APP_NAME}:dev
             fi
 
 workflows:
