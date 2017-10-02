@@ -40,4 +40,3 @@ workflows:
   build_image:
     jobs:
       - build
-          context: org-global
