@@ -1,7 +1,7 @@
 workflows:
   version: 2
+  context: org-global
   build-image:
-    context: org-global
     jobs:
       build:
         branches:
