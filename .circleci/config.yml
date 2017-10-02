@@ -4,14 +4,12 @@ jobs:
   some_name:
     machine:
       enabled: true
-#    branches:
-#      only:
-#        - develop
     working_directory: ~/app
     environment:
       APP_NAME: keycloak
     steps:
       - checkout
+      - run: echo ${CIRCLE_BRANCH}
       - run:
           name: Build
           when: on_success
