@@ -4,9 +4,9 @@ jobs:
   some_name:
     machine:
       enabled: true
-    branches:
-      only:
-        - develop
+#    branches:
+#      only:
+#        - develop
     working_directory: ~/app
     environment:
       APP_NAME: keycloak
