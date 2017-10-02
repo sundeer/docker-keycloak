@@ -9,7 +9,6 @@ jobs:
       APP_NAME: keycloak
     steps:
       - checkout
-      - run: echo ${CIRCLE_BRANCH}
       - run:
           name: Build
           when: on_success
@@ -18,7 +17,7 @@ jobs:
           name: Authenitcate Docker Hub
           when: on_success
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-      - run:
+      - deploy:
           name: Tag and Push to Docker Hub
           when: on_success
           command: |
@@ -26,7 +25,7 @@ jobs:
               docker tag ${APP_NAME}:prod ${DOCKER_USER}/${APP_NAME}:${CIRCLE_TAG}
               docker push ${DOCKER_USER}/${APP_NAME}:${CIRCLE_TAG}
             fi
-      - run:
+      - deploy:
           name: Tag and Push to Docker Hub
           when: on_success
           command: |
