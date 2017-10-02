@@ -6,7 +6,6 @@ jobs:
       enabled: true
     branches:
       only:
-        - master
         - develop
     working_directory: ~/app
     environment:
