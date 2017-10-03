@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  some_name:
+  build_image:
     machine:
       enabled: true
     working_directory: ~/app
@@ -39,4 +39,4 @@ workflows:
 
   build_image:
     jobs:
-      - some_name
+      - build_image
