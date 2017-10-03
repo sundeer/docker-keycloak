@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build_tagged_release:
+  properly_tagged_release:
     machine:
       enabled: true
     working_directory: ~/app
@@ -23,8 +23,7 @@ jobs:
           command: |
             docker tag ${APP_NAME}:prod ${DOCKER_USER}/${APP_NAME}:${CIRCLE_TAG}
             docker push ${DOCKER_USER}/${APP_NAME}:${CIRCLE_TAG}
-
-  build_dev:
+  dev_branch:
     machine:
       enabled: true
     working_directory: ~/app
@@ -49,34 +48,18 @@ jobs:
               docker push ${DOCKER_USER}/${APP_NAME}:dev
             fi
 
-  any:
-    machine:
-      enabled: true
-    working_directory: ~/app
-    environment:
-      APP_NAME: keycloak
-    steps:
-      - checkout
-      - run: echo APP_NAME IS ${APP_NAME}
-      - run: echo CIRCLE_BRANCH IS ${CIRCLE_BRANCH}
-      - run: echo CIRCLE_TAG IS ${CIRCLE_TAG}
-
 workflows:
   version: 2
 
   build_and_push_image:
     jobs:
-      - build_tagged_release:
+      - properly_tagged_release:
           filters:
             tags:
-              only: /.*/
+              only: /^v[0-9]+(\.[0-9]+){2}(-rc[0-9]+)?$/
             branches:
               ignore: /.*/
-      - build_dev:
+      - dev_branch:
           filters:
             branches:
               only: develop
-      # - any:
-      #     filters:
-      #       tags:
-      #         only: /.*/
