@@ -43,10 +43,8 @@ jobs:
           name: Tag and Push to Docker Hub
           when: on_success
           command: |
-            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              docker tag ${APP_NAME}:prod ${DOCKER_USER}/${APP_NAME}:dev
-              docker push ${DOCKER_USER}/${APP_NAME}:dev
-            fi
+            docker tag ${APP_NAME}:prod ${DOCKER_USER}/${APP_NAME}:dev
+            docker push ${DOCKER_USER}/${APP_NAME}:dev
 
 workflows:
   version: 2
