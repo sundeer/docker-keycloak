@@ -82,4 +82,5 @@ workflows:
               only: develop
       - any:
           filters:
-            only: /.*/
+            tags:
+              only: /.*/
