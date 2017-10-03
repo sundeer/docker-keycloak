@@ -71,11 +71,11 @@ workflows:
             tags:
               only: /.*/
             branches:
-              ingnore: /.*/
-      # - build_dev:
-      #     filters:
-      #       branches:
-      #         only: develop
+              ignore: /.*/
+      - build_dev:
+          filters:
+            branches:
+              only: develop
       # - any:
       #     filters:
       #       tags:
