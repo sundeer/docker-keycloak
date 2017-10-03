@@ -41,5 +41,7 @@ workflows:
     jobs:
       - build_deploy:
           filters:
+            branches:
+              ingnore: master
             tags:
               only: /.*/
