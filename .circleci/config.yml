@@ -52,7 +52,7 @@ workflows:
 
   build_and_push_image:
     jobs:
-      - build_tagged_releas:
+      - build_tagged_release:
           filters:
             tags:
               only: /.*/
