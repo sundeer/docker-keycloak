@@ -1,0 +1,22 @@
+version: '2'
+
+
+services:
+  prod:
+    extends:
+      file: docker-compose.yml
+      service: app
+    build:
+      args:
+        ENV: production
+    image: $APP_NAME:prod
+
+  dev:
+    extends:
+      file: docker-compose.yml
+      service: app
+    build:
+      args:
+        ENV: development
+    image: $APP_NAME:dev
+
