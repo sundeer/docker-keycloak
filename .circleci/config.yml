@@ -72,10 +72,10 @@ workflows:
               only: /.*/
             branches:
               ingnore: /.*/
-      - build_dev:
-          filters:
-            branches:
-              only: develop
+      # - build_dev:
+      #     filters:
+      #       branches:
+      #         only: develop
       # - any:
       #     filters:
       #       tags:
