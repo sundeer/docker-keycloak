@@ -12,6 +12,8 @@ jobs:
       - run:
           name: Build
           when: on_success
+          command: docker-compose -f docker-build.yml build prod
+      - run:
           name: Authenitcate Docker Hub
           when: on_success
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
@@ -56,6 +58,8 @@ workflows:
           filters:
             tags:
               only: /.*/
+            branches:
+              ingnore: /.*/
       - build_dev:
           filters:
             branches:
