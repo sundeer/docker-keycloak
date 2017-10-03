@@ -66,12 +66,12 @@ workflows:
 
   build_and_push_image:
     jobs:
-      - build_tagged_release:
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ingnore: /.*/
+      # - build_tagged_release:
+      #     filters:
+      #       tags:
+      #         only: /.*/
+      #       branches:
+      #         ingnore: /.*/
       - build_dev:
           filters:
             branches:
