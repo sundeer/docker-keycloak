@@ -57,29 +57,25 @@ jobs:
       APP_NAME: keycloak
     steps:
       - checkout
-      - run:
-          name: Build
-          when: on_success
-          command: |
-            echo APP_NAME IS ${APP_NAME}
-            echo CIRCLE_BRANCH IS ${CIRCLE_BRANCH}
-            echo CIRCLE_TAG IS ${CIRCLE_TAG}
+      - run: echo APP_NAME IS ${APP_NAME}
+      - run: echo CIRCLE_BRANCH IS ${CIRCLE_BRANCH}
+      - run: echo CIRCLE_TAG IS ${CIRCLE_TAG}
 
 workflows:
   version: 2
 
   build_and_push_image:
     jobs:
-      - build_tagged_release:
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ingnore: /.*/
-      - build_dev:
-          filters:
-            branches:
-              only: develop
+      # - build_tagged_release:
+      #     filters:
+      #       tags:
+      #         only: /.*/
+      #       branches:
+      #         ingnore: /.*/
+      # - build_dev:
+      #     filters:
+      #       branches:
+      #         only: develop
       - any:
           filters:
             tags:
