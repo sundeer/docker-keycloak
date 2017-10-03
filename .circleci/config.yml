@@ -49,6 +49,22 @@ jobs:
               docker push ${DOCKER_USER}/${APP_NAME}:dev
             fi
 
+  any:
+    machine:
+      enabled: true
+    working_directory: ~/app
+    environment:
+      APP_NAME: keycloak
+    steps:
+      - checkout
+      - run:
+          name: Build
+          when: on_success
+          command: |
+            echo APP_NAME IS ${APP_NAME}
+            echo CIRCLE_BRANCH IS ${CIRCLE_BRANCH}
+            echo CIRCLE_TAG IS ${CIRCLE_TAG}
+
 workflows:
   version: 2
 
@@ -64,3 +80,6 @@ workflows:
           filters:
             branches:
               only: develop
+      - any:
+          filters:
+            only: /.*/
