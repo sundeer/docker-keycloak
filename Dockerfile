@@ -1,2 +1,2 @@
-FROM jboss/keycloak-ha-postgres:3.4.1.Final
+FROM jboss/keycloak:3.4.1.Final
 
